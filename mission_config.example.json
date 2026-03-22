@@ -1,0 +1,60 @@
+{
+  "origin": "earth",
+  "launch_day": 0,
+  "dt_seconds": 1800,
+  "include_planet_gravity": true,
+  "spacecraft": {
+    "initial_mass_kg": 2600,
+    "dry_mass_kg": 1400
+  },
+  "stages": [
+    {
+      "name": "earth_to_mars_transfer",
+      "destination": "mars",
+      "sim_days": 260,
+      "snap_to_destination_orbit": true,
+      "burns": [
+        {
+          "start_days": 0,
+          "duration_hours": 24,
+          "thrust_x_n": 2.0,
+          "thrust_y_n": 0.8,
+          "isp_s": 3000
+        },
+        {
+          "start_days": 20,
+          "duration_hours": 8,
+          "thrust_x_n": 1.2,
+          "thrust_y_n": -0.3,
+          "repeat_every_days": 18,
+          "repeat_count": 6,
+          "mass_flow_kg_s": 0.00005
+        }
+      ]
+    },
+    {
+      "name": "mars_stay_and_return_to_earth",
+      "destination": "earth",
+      "sim_days": 300,
+      "snap_to_destination_orbit": true,
+      "burns": [
+        {
+          "start_days": 30,
+          "duration_hours": 16,
+          "thrust_x_n": -1.8,
+          "thrust_y_n": 0.7,
+          "isp_s": 2900
+        },
+        {
+          "start_days": 70,
+          "duration_hours": 6,
+          "thrust_x_n": -0.9,
+          "thrust_y_n": 0.4,
+          "repeat_every_days": 25,
+          "repeat_count": 5,
+          "mass_flow_kg_s": 0.00004
+        }
+      ]
+    }
+  ]
+}
